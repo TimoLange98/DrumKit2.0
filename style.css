@@ -12,7 +12,7 @@ body {
     font-family: 'Courier New', Courier, monospace;
 }
 
-#options-bar, #seq-state, #main-content {
+#options-bar, #seq-state-container, #main-content {
     margin-top: .2rem;
 }
 
@@ -47,37 +47,61 @@ body {
 
 .state-mark {
     height: 1rem;
-    width: 2rem;
+    width: 100%;
     background-color: white;
+    border: .1rem .2rem black;
+    border-style: ridge;
     overflow: hidden;
-    border-radius: 12px;
 }
 
+.marked-step {
+    height: 1rem;
+    width: 100%;
+    background-color: #e6b200;
+    border: .1rem .2rem black;
+    border-style: ridge;
+    overflow: hidden;
+}
+
+.matrix-field {
+    width: 100%;
+    background-color: white;
+    border: .1rem .2rem black;
+    border-style: ridge;
+}
+
+.maxtrix-field-wrap{
+    width: 100%;
+}
+
+
 .sound-desc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 2rem;
     font-weight: bolder;
     color: #e6b200;
-    padding: 1rem;
-    background-color: white;
-    border-radius: 24px;
-    display: flex;
-    justify-content: flex-end;
+    width: 7rem;
+    height: 3rem;
+    background-color: #696969;
+    border: .1rem .2rem;
+    border-style: solid;
+    overflow: hidden;
 }
 
 #content {
-    margin: 0rem 20rem;
+    margin: 0rem 15rem;
 }
 
-#seq-state {
+#seq-steps-container {
     flex-wrap: nowrap;
     justify-content: space-between;
     align-content: flex-end;
+    margin-left: 6.2rem;
 }
 
-#main-content {
-    border: none;
-}
-
+/* Optionen */
 #options-bar {
     flex-wrap: nowrap;
     margin-top: 15rem;
@@ -86,6 +110,7 @@ body {
     padding: .1rem 0.2rem;
 }
 
+/* bpm */
 #set-bpm-section {
     flex-wrap: nowrap;
     align-items: center;
@@ -101,7 +126,6 @@ body {
 input[type=range] {
     -webkit-appearance: none;
     appearance: none;
-    width: 100%;
     height: 1rem;
     opacity: 0.8;
     -webkit-transition: .2s;
@@ -113,6 +137,10 @@ input[type=range] {
 
 input[type=range]:hover {
     opacity: 1;
+}
+
+input[type=range]:focus {
+    outline: none;
 }
 
 input[type=range]::-webkit-slider-thumb {
