@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Drumkit 2</title>
+</head>
+
+<body>
+
+    <div id="content">
+        <div id="options-bar" class="h-container">
+            <div id="set-bpm-section" class="h-container">
+                <span id="bpm-display" class="bmp-section-element no-select">120 bpm</span>
+                <input type="range" id="bpm-slider" class="bmp-section-element" name="bpm-slider"
+                    oninput="showVal(this.value)" onchange="showVal(this.value)" onload="showVal(this.value)" min="50"
+                    max="200" value="120">
+            </div>
+        </div>
+
+        <div id="seq-state" class="h-container">
+            <div class="state-mark">
+            </div>
+            <div class="state-mark">
+            </div>
+            <div class="state-mark">
+            </div>
+            <div class="state-mark">
+            </div>
+            <div class="state-mark">
+            </div>
+            <div class="state-mark">
+            </div>
+            <div class="state-mark">
+            </div>
+            <div class="state-mark">
+            </div>
+            <div class="state-mark">
+            </div>
+            <div class="state-mark">
+            </div>
+            <div class="state-mark">
+            </div>
+            <div class="state-mark">
+            </div>
+            <div class="state-mark">
+            </div>
+            <div class="state-mark">
+            </div>
+            <div class="state-mark">
+            </div>
+            <div class="state-mark">
+            </div>
+        </div>
+
+        <div id="main-content" class="h-container">
+            <div id="kick-seq-row">
+                <div id="kick-desc" class="sound-desc">
+                    <span>Kick</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="code.js"></script>
+</body>
+
+</html>

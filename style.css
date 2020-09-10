@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url(./Images/page_background_image3.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#options-bar, #seq-state, #main-content {
+    margin-top: .2rem;
+}
+
+.h-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.v-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+.bmp-section-element {
+    margin: 0 .2rem;
+}
+
+.state-mark {
+    height: 1rem;
+    width: 2rem;
+    background-color: white;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.sound-desc {
+    font-size: 2rem;
+    font-weight: bolder;
+    color: #e6b200;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 24px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#content {
+    margin: 0rem 20rem;
+}
+
+#seq-state {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: flex-end;
+}
+
+#main-content {
+    border: none;
+}
+
+#options-bar {
+    flex-wrap: nowrap;
+    margin-top: 15rem;
+    background-color: black;
+    border-radius: 24px;
+    padding: .1rem 0.2rem;
+}
+
+#set-bpm-section {
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+#bpm-display {
+    color: white;
+    white-space: nowrap;
+    width: 100px;
+    text-align: end;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 1rem;
+    opacity: 0.8;
+    -webkit-transition: .2s;
+    transition: .2s;
+    background-color: #d0d0d0;
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+input[type=range]:hover {
+    opacity: 1;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 1rem;
+    width: 1rem;
+    /* background: #e6b200; */
+    background: black;
+    overflow: hidden;
+    border-radius: 24px;
+}
