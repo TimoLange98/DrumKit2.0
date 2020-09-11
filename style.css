@@ -12,7 +12,7 @@ body {
     font-family: 'Courier New', Courier, monospace;
 }
 
-#options-bar, #seq-state-container, #main-content {
+#options-bar, #seq-steps-container, #main-content {
     margin-top: .2rem;
 }
 
@@ -45,7 +45,24 @@ body {
     margin: 0 .2rem;
 }
 
-.state-mark {
+.option-desc {
+    color: white;
+    margin-left: 1rem;
+}
+
+.sound-option-button {
+    margin: 0 .2rem;
+    height: 100%;
+    width: 2rem;
+    color: white;
+    background-color: #696969;
+}
+
+.sound-option-button:focus {
+    outline: none;
+}
+
+.step-mark {
     height: 1rem;
     width: 100%;
     background-color: white;
@@ -54,13 +71,12 @@ body {
     overflow: hidden;
 }
 
-.marked-step {
-    height: 1rem;
-    width: 100%;
-    background-color: #e6b200;
-    border: .1rem .2rem black;
-    border-style: ridge;
-    overflow: hidden;
+div>div.active-step {
+    background-color: #e6b200 !important;
+}
+
+div>div.active-matrix-field {
+    background-color: #e6b200 !important;
 }
 
 .matrix-field {
@@ -70,21 +86,37 @@ body {
     border-style: ridge;
 }
 
-.maxtrix-field-wrap{
+.matrix-field-wrap {
     width: 100%;
 }
 
+.two-beat-seq {
+    background-color: #696969;
+}
+
+.two-beat-track {
+    background-color: #696969;
+}
+
+.four-beat-seq {
+    background-color: #696969;
+}
+
+.four-beat-track {
+    background-color: #696969;
+}
 
 .sound-desc {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: bolder;
     color: #e6b200;
     width: 7rem;
-    height: 3rem;
+    height: 2rem;
     background-color: #696969;
+    border-color: #e6b200;
     border: .1rem .2rem;
     border-style: solid;
     overflow: hidden;
@@ -98,10 +130,11 @@ body {
     flex-wrap: nowrap;
     justify-content: space-between;
     align-content: flex-end;
-    margin-left: 6.2rem;
+    margin-left: 7rem;
 }
 
 /* Optionen */
+
 #options-bar {
     flex-wrap: nowrap;
     margin-top: 15rem;
@@ -111,6 +144,7 @@ body {
 }
 
 /* bpm */
+
 #set-bpm-section {
     flex-wrap: nowrap;
     align-items: center;
@@ -152,4 +186,8 @@ input[type=range]::-webkit-slider-thumb {
     background: black;
     overflow: hidden;
     border-radius: 24px;
+}
+
+#toggleBarLength-btn:disabled {
+    opacity: .8;
 }

@@ -13,31 +13,26 @@
     <div id="content">
         <div id="options-bar" class="h-container">
             <div id="set-bpm-section" class="h-container">
-                <span id="bpm-display" class="bmp-section-element no-select">120 bpm</span>
+                <span id="bpm-display" class="bmp-section-element no-select" ondblclick="resetBpm()">120 bpm</span>
                 <input type="range" id="bpm-slider" class="bmp-section-element" name="bpm-slider"
-                    oninput="showVal(this.value)" onchange="showVal(this.value)" onload="showVal(this.value)" min="50"
-                    max="200" value="120">
+                    oninput="changeVal(this.value)" onchange="changeVal(this.value)" onload="changeVal(this.value)"
+                    min="50" max="200" value="120">
             </div>
-            <button id="play-btn" onclick="play()">Play</button>
+            <button id="play-btn" class="sound-option-button" onclick="play()">Play</button>
+            <button id="stop-btn" class="sound-option-button" onclick="stop()">Stop</button>
+            <span class="option-desc">Bars: </span>
+            <button id="toggleBarLength-btn" class="sound-option-button" onclick="toggleBar()">8</button>
         </div>
 
         <div id="seq-steps-container" class="h-container">
-            <div class="state-mark">
-            </div>
-            <div class="state-mark">
-            </div>
-            <div class="state-mark">
-            </div>
-            <div class="state-mark">
-            </div>
-            <div class="state-mark">
-            </div>
-            <div class="state-mark">
-            </div>
-            <div class="state-mark">
-            </div>
-            <div class="state-mark">
-            </div>
+            <div class="step-mark"></div>
+            <div class="step-mark"></div>
+            <div class="step-mark"></div>
+            <div class="step-mark"></div>
+            <div class="step-mark"></div>
+            <div class="step-mark"></div>
+            <div class="step-mark"></div>
+            <div class="step-mark"></div>
         </div>
 
         <div id="main-content" class="v-container">
@@ -46,7 +41,7 @@
                     <span class="no-select">Kick</span>
                 </div>
 
-                <div class="maxtrix-field-wrap h-container">
+                <div class="matrix-field-wrap h-container">
                     <div class="matrix-field"></div>
                     <div class="matrix-field"></div>
                     <div class="matrix-field"></div>
@@ -64,7 +59,7 @@
                 <span class="no-select">Snare</span>
             </div>
 
-            <div class="maxtrix-field-wrap h-container">
+            <div class="matrix-field-wrap h-container">
                 <div class="matrix-field"></div>
                 <div class="matrix-field"></div>
                 <div class="matrix-field"></div>
@@ -81,7 +76,7 @@
                 <span class="no-select">Hat</span>
             </div>
 
-            <div class="maxtrix-field-wrap h-container">
+            <div class="matrix-field-wrap h-container">
                 <div class="matrix-field"></div>
                 <div class="matrix-field"></div>
                 <div class="matrix-field"></div>
