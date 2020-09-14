@@ -5,10 +5,10 @@ const toggleBarLengthButton = document.getElementById('toggleBarLength-btn');
 const toggleBeatButton = document.getElementById('toggleBeat-btn');
 
 //Sound-steps-container and matrix-row container
-const stepsContainer = document.getElementById('seq-steps-container');
+const stepsContainer = document.getElementById('seq-steps-wrap');
 const matrixRowsContainer = Array.from(document.getElementsByClassName('matrix-field-wrap'));
 
-//Steps
+//Other globals
 var steps;
 
 var bpm = 120;
@@ -17,6 +17,8 @@ var barLength = 8;
 
 var playing = false;
 var running = false;
+
+// window.onresize = () => {console.log('hello')};
 
 //OPTIONS//
 
@@ -37,11 +39,12 @@ const play = () => {
     if (running && playing)
         return;
 
-    steps = Array.from(document.getElementById('seq-steps-container').children);
+    steps = Array.from(document.getElementById('seq-steps-wrap').children);
 
     playing = true;
     running = true;
     document.getElementById('toggleBarLength-btn').disabled = true;
+    document.getElementById('toggleBeat-btn').disabled = true;
 
     showRun();
 }
@@ -52,7 +55,7 @@ const showRun = async (i = 0) => {
 
     var index = i++ % steps.length;
     steps[index].classList.add('active-step');
-    await delay((60 / bpm) * 1000);
+    await delay((60 / bpm) * 1000 / (beat / 4));
     steps[index].classList.remove('active-step');
     showRun(i);
 }
@@ -67,6 +70,7 @@ const stop = () => {
     playing = false;
     running = false;
     document.getElementById('toggleBarLength-btn').disabled = false;
+    document.getElementById('toggleBeat-btn').disabled = false;
 }
 
 //Toogle bar length

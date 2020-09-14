@@ -68,7 +68,6 @@ body {
     background-color: white;
     border: .1rem .2rem black;
     border-style: ridge;
-    overflow: hidden;
 }
 
 div>div.active-step {
@@ -83,11 +82,6 @@ div>div.active-matrix-field {
     width: 100%;
     border: .1rem .2rem black;
     border-style: ridge;
-    -webkit-transition: all .5s ease-out;
-    -moz-transition: all .5s ease-out;
-    -ms-transition: all .5s ease-out;
-    -o-transition: all .5s ease-out;
-    transition: all .5s ease-out;
 }
 
 .matrix-field-wrap {
@@ -202,13 +196,32 @@ input[type=range]::-webkit-slider-thumb {
     opacity: .8;
 }
 
-#seq-steps-container {
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-content: flex-end;
-    margin-left: 7rem;
+#toggleBeat-btn:disabled{
+    opacity: .8;
 }
 
 #main-content {
     margin-top: .5rem;
+}
+
+#seq-steps-row{
+    margin: .2rem 0;
+}
+
+#seq-steps-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bolder;
+    background-color: #696969;
+    height: 1rem;
+    width: 7rem;
+    border: .1rem .2rem;
+    border-style: ridge;
+    border-color: #e6b200;
+}
+
+#seq-steps-wrap{
+    width: 100%;
 }

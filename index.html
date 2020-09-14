@@ -13,7 +13,7 @@
     <div id="content">
         <div id="options-bar" class="h-container">
             <div id="set-bpm-section" class="h-container">
-                <span id="bpm-display" class="bmp-section-element no-select" ondblclick="resetBpm()">120 bpm</span> 
+                <span id="bpm-display" class="bmp-section-element no-select" ondblclick="resetBpm()">120 bpm</span>
                 <input type="range" id="bpm-slider" class="bmp-section-element" name="bpm-slider"
                     oninput="changeVal(this.value)" onchange="changeVal(this.value)" onload="changeVal(this.value)"
                     min="50" max="200" value="120">
@@ -21,23 +21,29 @@
             <button id="play-btn" class="sound-option-button" onclick="play()">Play</button>
             <button id="stop-btn" class="sound-option-button" onclick="stop()">Stop</button>
             <span class="btn-desc no-select">Bars: </span>
-            <button id="toggleBarLength-btn" class="sound-option-button no-select" onclick="toggleBarLength()">8</button>
+            <button id="toggleBarLength-btn" class="sound-option-button no-select"
+                onclick="toggleBarLength()">8</button>
             <span class="btn-desc no-select">Beat: </span>
             <button id="toggleBeat-btn" class="sound-option-button no-select" onclick="toggleBeat()">1/8</button>
         </div>
 
-        <div id="seq-steps-container" class="h-container">
-            <div class="step-mark odd-beat-step"></div>
-            <div class="step-mark odd-beat-step"></div>
-            <div class="step-mark odd-beat-step"></div>
-            <div class="step-mark odd-beat-step"></div>
-            <div class="step-mark odd-beat-step"></div>
-            <div class="step-mark odd-beat-step"></div>
-            <div class="step-mark odd-beat-step"></div>
-            <div class="step-mark odd-beat-step"></div>
-        </div>
-
         <div id="main-content" class="v-container">
+            <div id="seq-steps-row" class="h-container">
+                <div id="seq-steps-placeholder">
+                    <span class="no-select">Steps</span>
+                </div>
+
+                <div id="seq-steps-wrap" class="h-container">
+                    <div class="step-mark odd-beat-step"></div>
+                    <div class="step-mark odd-beat-step"></div>
+                    <div class="step-mark odd-beat-step"></div>
+                    <div class="step-mark odd-beat-step"></div>
+                    <div class="step-mark odd-beat-step"></div>
+                    <div class="step-mark odd-beat-step"></div>
+                    <div class="step-mark odd-beat-step"></div>
+                    <div class="step-mark odd-beat-step"></div>
+                </div>
+            </div>
             <div id="kick-seq-row" class="h-container">
                 <div class="sound-desc">
                     <span class="no-select">Kick</span>
@@ -45,51 +51,50 @@
 
                 <div class="matrix-field-wrap h-container">
                     <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
                 </div>
             </div>
             <div id="snare-seq-row" class="h-container">
                 <div class="sound-desc">
                     <span class="no-select">Snare</span>
                 </div>
-    
+
                 <div class="matrix-field-wrap h-container">
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
                 </div>
             </div>
-    
+
             <div id="hat-seq-row" class="h-container">
                 <div class="sound-desc">
                     <span class="no-select">Hat</span>
                 </div>
-    
+
                 <div class="matrix-field-wrap h-container">
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
-                    <div class="matrix-field odd-beat-matrix-field"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
+                    <div class="matrix-field odd-beat-matrix-field" onclick="toggleMatrixField(this)"></div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <script src="code.js"></script>
 </body>
