@@ -2,6 +2,7 @@
 const bpmSlider = document.getElementById('bpm-slider');
 const bpmDisplay = document.getElementById('bpm-display');
 const toggleBarLengthButton = document.getElementById('toggleBarLength-btn');
+const toggleBeatButton = document.getElementById('toggleBeat-btn');
 
 //Sound-steps-container and matrix-row container
 const stepsContainer = document.getElementById('seq-steps-container');
@@ -11,11 +12,13 @@ const matrixRowsContainer = Array.from(document.getElementsByClassName('matrix-f
 var steps;
 
 var bpm = 120;
-var playing = false;
-var running = false;
+var beat = 8;
 var barLength = 8;
 
-//OPTIONS
+var playing = false;
+var running = false;
+
+//OPTIONS//
 
 //Showing bpm
 const changeVal = (val) => {
@@ -39,26 +42,19 @@ const play = () => {
     playing = true;
     running = true;
     document.getElementById('toggleBarLength-btn').disabled = true;
-    
-    run();
+
+    showRun();
 }
 
-
-const run = async (i = 0) => {
+const showRun = async (i = 0) => {
     if (!playing)
         return;
 
     var index = i++ % steps.length;
     steps[index].classList.add('active-step');
-    matrixRowsContainer.forEach(container => {
-        Array.from(container.children)[index].classList.add('active-matrix-field');
-    });
     await delay((60 / bpm) * 1000);
     steps[index].classList.remove('active-step');
-    matrixRowsContainer.forEach(container => {
-        Array.from(container.children)[index].classList.remove('active-matrix-field');
-    });
-    run(i);
+    showRun(i);
 }
 
 const delay = (ms) => {
@@ -74,39 +70,88 @@ const stop = () => {
 }
 
 //Toogle bar length
-const toggleBar = () => {
-    if (barLength === 8) {
-        barLength = 16;
-        toggleBarLengthButton.textContent = barLength;
-        Array(8).fill(8).forEach(_ => {
-            var stepDiv = document.createElement('div');
-            stepDiv.classList.add('step-mark', 'two-beat-seq');
+const toggleBarLength = () => {
+    barLength = barLength < 32 ? barLength * 2 : 8;
+    toggleBarLengthButton.textContent = barLength;
 
+    if (barLength === 8) {
+        removeBars();
+    } else if (barLength === 16) {
+        makeBar(2, 1);
+    } else if (barLength === 32) {
+        makeBar(3, 2);
+    }
+}
+
+const makeBar = (index, n) => {
+    if (index % 2 === 0) {
+        Array.from(Array(8)).forEach(_ => {
+            var stepDiv = document.createElement('div');
+            stepDiv.classList.add('step-mark', 'even-beat-step');
             stepsContainer.appendChild(stepDiv);
             matrixRowsContainer.forEach(container => {
                 var matrixDiv = document.createElement('div');
-                matrixDiv.classList.add('matrix-field', 'two-beat-track')
+                matrixDiv.classList.add('matrix-field', 'even-beat-matrix-field')
                 container.appendChild(matrixDiv);
             })
         })
-    } //else if (barLength === 16) { //do smth}....
-    
-    
-    
-    
-    
-    
-    // else {
-    //     barLength = 8;
-    //     toggleBarLengthButton.textContent = barLength;
-    //     Array.from(stepsContainer.getElementsByClassName('two-beat-seq')).forEach(e => {
-    //         stepsContainer.removeChild(e);
-    //     });
-
-    //     matrixRowsContainer.forEach(container => {
-    //         Array.from(container.getElementsByClassName('two-beat-track')).forEach(e => {
-    //             container.removeChild(e);
-    //         });
-    //     });
-    // }
+        if (--n > 0)
+            makeBar(++index, n);
+    } else {
+        Array.from(Array(8)).forEach(_ => {
+            var stepDiv = document.createElement('div');
+            stepDiv.classList.add('step-mark', 'odd-beat-step');
+            stepsContainer.appendChild(stepDiv);
+            matrixRowsContainer.forEach(container => {
+                var matrixDiv = document.createElement('div');
+                matrixDiv.classList.add('matrix-field', 'odd-beat-matrix-field')
+                container.appendChild(matrixDiv);
+            })
+        })
+        if (--n > 0)
+            makeBar(++index, n);
+    }
 }
+
+const removeBars = () => {
+    Array.from(Array(24)).forEach(_ => {
+        stepsContainer.removeChild(stepsContainer.lastChild);
+        matrixRowsContainer.forEach(container => {
+            container.removeChild(container.lastChild);
+        })
+    })
+}
+
+const fillBarContent = () => {
+    if (beat === 4) {
+
+    } else {
+
+    }
+}
+
+const fill1_4 = () => {
+
+}
+
+const fill1_8 = () => {
+
+}
+
+//Toggle beat
+const toggleBeat = () => {
+    if (beat === 8) {
+        beat = 4;
+        toggleBeatButton.textContent = '1/4';
+    } else {
+        beat = 8;
+        toggleBeatButton.textContent = '1/8';
+    }
+}
+
+//Programm maxtrix
+const toggleMatrixField = (field) => {
+    console.log(field);
+    _ = field.classList.contains('play-this') ? field.classList.remove('play-this') : field.classList.add('play-this');
+}
+

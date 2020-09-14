@@ -45,7 +45,7 @@ body {
     margin: 0 .2rem;
 }
 
-.option-desc {
+.btn-desc {
     color: white;
     margin-left: 1rem;
 }
@@ -81,28 +81,32 @@ div>div.active-matrix-field {
 
 .matrix-field {
     width: 100%;
-    background-color: white;
     border: .1rem .2rem black;
     border-style: ridge;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -ms-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
 }
 
 .matrix-field-wrap {
     width: 100%;
 }
 
-.two-beat-seq {
+.odd-beat-step {
+    background-color: white;
+}
+
+.odd-beat-matrix-field {
+    background-color: white;
+}
+
+.even-beat-step {
     background-color: #696969;
 }
 
-.two-beat-track {
-    background-color: #696969;
-}
-
-.four-beat-seq {
-    background-color: #696969;
-}
-
-.four-beat-track {
+.even-beat-matrix-field {
     background-color: #696969;
 }
 
@@ -122,15 +126,19 @@ div>div.active-matrix-field {
     overflow: hidden;
 }
 
-#content {
-    margin: 0rem 15rem;
+.play-this {
+    position: relative;
+    top: -.2rem;
+    border-style: solid;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -ms-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
 }
 
-#seq-steps-container {
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-content: flex-end;
-    margin-left: 7rem;
+#content {
+    margin: 0rem 15rem;
 }
 
 /* Optionen */
@@ -141,6 +149,8 @@ div>div.active-matrix-field {
     background-color: black;
     border-radius: 24px;
     padding: .1rem 0.2rem;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 /* bpm */
@@ -182,12 +192,23 @@ input[type=range]::-webkit-slider-thumb {
     appearance: none;
     height: 1rem;
     width: 1rem;
-    /* background: #e6b200; */
-    background: black;
-    overflow: hidden;
+    background: #e6b200;
+    overflow: visible;
+    border: .1rem solid black;
     border-radius: 24px;
 }
 
 #toggleBarLength-btn:disabled {
     opacity: .8;
+}
+
+#seq-steps-container {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: flex-end;
+    margin-left: 7rem;
+}
+
+#main-content {
+    margin-top: .5rem;
 }
