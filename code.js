@@ -9,7 +9,7 @@ const stepsContainer = document.getElementById('seq-steps-wrap');
 const matrixRowsContainer = Array.from(document.getElementsByClassName('matrix-field-wrap'));
 
 //Other globals
-var steps;
+var steps = Array.from(document.getElementById('seq-steps-wrap').children);
 
 var bpm = 120;
 var beat = 8;
@@ -17,8 +17,6 @@ var barLength = 8;
 
 var playing = false;
 var running = false;
-
-// window.onresize = () => {console.log('hello')};
 
 //OPTIONS//
 
@@ -38,8 +36,6 @@ const resetBpm = () => {
 const play = () => {
     if (running && playing)
         return;
-
-    steps = Array.from(document.getElementById('seq-steps-wrap').children);
 
     playing = true;
     running = true;
@@ -70,7 +66,6 @@ const stop = () => {
     playing = false;
     running = false;
     document.getElementById('toggleBarLength-btn').disabled = false;
-    document.getElementById('toggleBeat-btn').disabled = false;
 }
 
 //Toogle bar length
@@ -80,11 +75,15 @@ const toggleBarLength = () => {
 
     if (barLength === 8) {
         removeBars();
+        steps = Array.from(document.getElementById('seq-steps-wrap').children);
     } else if (barLength === 16) {
         makeBar(2, 1);
+        steps = Array.from(document.getElementById('seq-steps-wrap').children);
     } else if (barLength === 32) {
         makeBar(3, 2);
+        steps = Array.from(document.getElementById('seq-steps-wrap').children);
     }
+    fillBarContent();
 }
 
 const makeBar = (index, n) => {
@@ -126,20 +125,20 @@ const removeBars = () => {
     })
 }
 
-const fillBarContent = () => {
-    if (beat === 4) {
-
+const fillBarContent = (b = 1, c = 0, index = 0, empty = false) => {
+    if (steps[index] === undefined)
+        return;
+    if (!empty) {
+        if (++c % 5 === 0) {
+            b++;
+            c = 1;
+        }
+        steps[index].textContent = b + '.' + c;
+        empty = true;
     } else {
-
+        empty = false;
     }
-}
-
-const fill1_4 = () => {
-
-}
-
-const fill1_8 = () => {
-
+    fillBarContent(b, c, ++index, empty);
 }
 
 //Toggle beat
@@ -155,7 +154,9 @@ const toggleBeat = () => {
 
 //Programm maxtrix
 const toggleMatrixField = (field) => {
-    console.log(field);
     _ = field.classList.contains('play-this') ? field.classList.remove('play-this') : field.classList.add('play-this');
 }
 
+//Event handler
+
+window.onload = fillBarContent();

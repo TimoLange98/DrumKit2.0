@@ -63,6 +63,10 @@ body {
 }
 
 .step-mark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .5rem;
     height: 1rem;
     width: 100%;
     background-color: white;
